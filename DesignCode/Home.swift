@@ -13,7 +13,7 @@ struct Home: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             ForEach(menu) { item in
-                MenuRow(image: item.icon, text: item.title)
+                MenuRow(menu: item)
             }
             Spacer()
         }
@@ -34,16 +34,15 @@ struct Home_Previews: PreviewProvider {
 }
 
 struct MenuRow: View {
-    var image = "creditcard"
-    var text = "My Account"
+    var menu: Menu
     var body: some View {
         HStack {
-            Image(systemName: image)
+            Image(systemName: menu.icon)
                 .imageScale(.large)
                 .foregroundColor(Color("icons"))
                 .frame(width: 32, height: 32)
             
-            Text(text)
+            Text(menu.title)
                 .font(.headline)
             Spacer()
         }
